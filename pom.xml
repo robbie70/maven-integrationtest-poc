@@ -169,17 +169,35 @@
                 <skip.unit.tests>true</skip.unit.tests>
             </properties>
             <build>
+                <resources>
+                    <resource>
+                        <directory>src/test/</directory>
+                        <excludes>
+                            <exclude>**/*.java</exclude>
+                        </excludes>
+                    </resource>
+                    <resource>
+                        <filtering>true</filtering>
+                        <directory>src/integration-test/resources</directory>
+                    </resource>
+                </resources>
                 <testResources>
+                    <!--
                     <testResource>
                         <directory>src/integration-test/java</directory>
                         <excludes>
                             <exclude>**/*.java</exclude>
                         </excludes>
                     </testResource>
+                    -->
+                    <!--
                     <testResource>
-                        <filtering>true</filtering>
-                        <directory>src/integration-test/resources</directory>
+                        <directory>src/test</directory>
+                        <excludes>
+                            <exclude>**/*.java</exclude>
+                        </excludes>
                     </testResource>
+                    -->
                 </testResources>
                 <plugins>
                     <plugin>
@@ -191,7 +209,7 @@
                             <!-- Add a new source directory to our build -->
                             <execution>
                                 <id>add-integration-test-sources</id>
-                                <phase>generate-test-resources</phase>
+                                <phase>generate-test-sources</phase>
                                 <goals>
                                     <goal>add-test-source</goal>
                                 </goals>
@@ -202,7 +220,9 @@
                                     </sources>
                                 </configuration>
                             </execution>
-                            <!-- Add a new resource directory to our build -->
+
+                            <!--
+                            <!~~ Add a new resource directory to our build ~~>
                             <execution>
                                 <id>add-integration-test-resources</id>
                                 <phase>generate-test-resources</phase>
@@ -210,13 +230,13 @@
                                     <goal>add-test-resource</goal>
                                 </goals>
                                 <configuration>
-                                    <!-- Configures the resource directory of our integration tests -->
+                                    <!~~ Configures the resource directory of our integration tests ~~>
                                     <resources>
-                                        <!--
+                                        <!~~
                                             Placeholders that are found from the files located in the configured resource
                                             directories are replaced with the property values found from the profile
                                             specific configuration file.
-                                        -->
+                                        ~~>
                                         <resource>
                                             <filtering>true</filtering>
                                             <directory>src/integration-test/resources</directory>
@@ -224,6 +244,8 @@
                                     </resources>
                                 </configuration>
                             </execution>
+                            -->
+
                         </executions>
                     </plugin>
                     <plugin>
