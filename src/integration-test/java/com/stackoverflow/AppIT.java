@@ -16,8 +16,9 @@ public class AppIT
      * Rigorous Test :-)
      */
     @Test
-    public void ITPass()
+    public void shouldPassIT()
     {
+        System.out.println(">>>running integration-test");
         assertEquals(prop.get("environment"), "integration-test-env");
         assertEquals(prop.get("build.profile"), "integration-test");
     }

@@ -15,15 +15,15 @@ public class ConfigPropertiesReader {
             prop = new Properties();
 
             if (input == null) {
-                System.out.println("Sorry, unable to find config.properties");
+                System.out.println(">>>" + "Sorry, unable to find config.properties");
             }
 
             //load a properties file from class path, inside static method
             prop.load(input);
 
             //get the property value and print it out
-            System.out.println(prop.getProperty("environment"));
-            System.out.println(prop.getProperty("build.profile"));
+            System.out.println(">>>" + prop.getProperty("environment"));
+            System.out.println(">>>" + prop.getProperty("build.profile"));
 
         } catch (IOException ex) {
             ex.printStackTrace();

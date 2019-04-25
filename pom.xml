@@ -91,31 +91,7 @@
         </pluginManagement>
 
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-failsafe-plugin</artifactId>
-                <version>3.0.0-M1</version>
-                <executions>
-                    <!--
-                        Invokes both the integration-test and the verify goals of the
-                        Failsafe Maven plugin
-                    -->
-                    <execution>
-                        <id>integration-tests</id>
-                        <goals>
-                            <goal>integration-test</goal>
-                            <goal>verify</goal>
-                        </goals>
-                        <configuration>
-                            <!--
-                                Skips integration tests if the value of skip.integration.tests
-                                property is true
-                            -->
-                            <skipTests>${skip.integration.tests}</skipTests>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
+
         </plugins>
 
     </build>
@@ -162,6 +138,12 @@
                         </excludes>
                     </testResource>
                     <testResource>
+                        <directory>src/integration-test/java</directory>
+                        <excludes>
+                            <exclude>**/*.java</exclude>
+                        </excludes>
+                    </testResource>
+                    <testResource>
                         <filtering>true</filtering>
                         <directory>src/test/resources</directory>
                     </testResource>
@@ -187,18 +169,18 @@
                 <skip.unit.tests>true</skip.unit.tests>
             </properties>
             <build>
-                <resources>
-                    <resource>
+                <testResources>
+                    <testResource>
                         <directory>src/integration-test/java</directory>
                         <excludes>
                             <exclude>**/*.java</exclude>
                         </excludes>
-                    </resource>
-                    <resource>
+                    </testResource>
+                    <testResource>
                         <filtering>true</filtering>
                         <directory>src/integration-test/resources</directory>
-                    </resource>
-                </resources>
+                    </testResource>
+                </testResources>
                 <plugins>
                     <plugin>
                         <groupId>org.codehaus.mojo</groupId>
@@ -209,9 +191,9 @@
                             <!-- Add a new source directory to our build -->
                             <execution>
                                 <id>add-integration-test-sources</id>
-                                <phase>generate-sources</phase>
+                                <phase>generate-test-resources</phase>
                                 <goals>
-                                    <goal>add-source</goal>
+                                    <goal>add-test-source</goal>
                                 </goals>
                                 <configuration>
                                     <!-- Configures the source directory of our integration tests -->
@@ -223,9 +205,9 @@
                             <!-- Add a new resource directory to our build -->
                             <execution>
                                 <id>add-integration-test-resources</id>
-                                <phase>generate-resources</phase>
+                                <phase>generate-test-resources</phase>
                                 <goals>
-                                    <goal>add-resource</goal>
+                                    <goal>add-test-resource</goal>
                                 </goals>
                                 <configuration>
                                     <!-- Configures the resource directory of our integration tests -->
@@ -240,6 +222,31 @@
                                             <directory>src/integration-test/resources</directory>
                                         </resource>
                                     </resources>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-failsafe-plugin</artifactId>
+                        <version>3.0.0-M1</version>
+                        <executions>
+                            <!--
+                                Invokes both the integration-test and the verify goals of the
+                                Failsafe Maven plugin
+                            -->
+                            <execution>
+                                <id>integration-tests</id>
+                                <goals>
+                                    <goal>integration-test</goal>
+                                    <goal>verify</goal>
+                                </goals>
+                                <configuration>
+                                    <!--
+                                        Skips integration tests if the value of skip.integration.tests
+                                        property is true
+                                    -->
+                                    <skipTests>${skip.integration.tests}</skipTests>
                                 </configuration>
                             </execution>
                         </executions>

@@ -1,8 +1,6 @@
 package com.stackoverflow;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
 import org.junit.Test;
 
 import java.util.Properties;
@@ -21,6 +19,7 @@ public class AppTest
     @Test
     public void unitTestPass()
     {
+        System.out.println(">>>running dev test");
         assertEquals(prop.get("environment"), "dev-env");
         assertEquals(prop.get("build.profile"), "dev");
     }
