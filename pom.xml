@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.stackoverflow</groupId>
-    <artifactId>mavencompilerpluginoverride</artifactId>
+    <artifactId>maven-compilerpluginoverride</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <name>mavencompilerpluginoverride</name>
@@ -23,7 +23,6 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.11</version>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 
@@ -188,18 +187,18 @@
                 <skip.unit.tests>true</skip.unit.tests>
             </properties>
             <build>
-                <testResources>
-                    <testResource>
+                <resources>
+                    <resource>
                         <directory>src/integration-test/java</directory>
                         <excludes>
                             <exclude>**/*.java</exclude>
                         </excludes>
-                    </testResource>
-                    <testResource>
+                    </resource>
+                    <resource>
                         <filtering>true</filtering>
                         <directory>src/integration-test/resources</directory>
-                    </testResource>
-                </testResources>
+                    </resource>
+                </resources>
                 <plugins>
                     <plugin>
                         <groupId>org.codehaus.mojo</groupId>
@@ -210,9 +209,9 @@
                             <!-- Add a new source directory to our build -->
                             <execution>
                                 <id>add-integration-test-sources</id>
-                                <phase>generate-test-sources</phase>
+                                <phase>generate-sources</phase>
                                 <goals>
-                                    <goal>add-test-source</goal>
+                                    <goal>add-source</goal>
                                 </goals>
                                 <configuration>
                                     <!-- Configures the source directory of our integration tests -->
@@ -224,9 +223,9 @@
                             <!-- Add a new resource directory to our build -->
                             <execution>
                                 <id>add-integration-test-resources</id>
-                                <phase>generate-test-resources</phase>
+                                <phase>generate-resources</phase>
                                 <goals>
-                                    <goal>add-test-resource</goal>
+                                    <goal>add-resource</goal>
                                 </goals>
                                 <configuration>
                                     <!-- Configures the resource directory of our integration tests -->

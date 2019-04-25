@@ -21,7 +21,7 @@ public class AppTest
     @Test
     public void unitTestPass()
     {
-        assertEquals(prop.get("environment"), "dev-test-env");
+        assertEquals(prop.get("environment"), "dev-env");
         assertEquals(prop.get("build.profile"), "dev");
     }
 }

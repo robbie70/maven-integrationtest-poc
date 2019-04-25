@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-class ConfigPropertiesReader {
+public class ConfigPropertiesReader {
 
     private static Properties prop;
 
