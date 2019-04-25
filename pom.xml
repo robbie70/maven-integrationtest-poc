@@ -182,22 +182,6 @@
                     </resource>
                 </resources>
                 <testResources>
-                    <!--
-                    <testResource>
-                        <directory>src/integration-test/java</directory>
-                        <excludes>
-                            <exclude>**/*.java</exclude>
-                        </excludes>
-                    </testResource>
-                    -->
-                    <!--
-                    <testResource>
-                        <directory>src/test</directory>
-                        <excludes>
-                            <exclude>**/*.java</exclude>
-                        </excludes>
-                    </testResource>
-                    -->
                 </testResources>
                 <plugins>
                     <plugin>
@@ -220,32 +204,6 @@
                                     </sources>
                                 </configuration>
                             </execution>
-
-                            <!--
-                            <!~~ Add a new resource directory to our build ~~>
-                            <execution>
-                                <id>add-integration-test-resources</id>
-                                <phase>generate-test-resources</phase>
-                                <goals>
-                                    <goal>add-test-resource</goal>
-                                </goals>
-                                <configuration>
-                                    <!~~ Configures the resource directory of our integration tests ~~>
-                                    <resources>
-                                        <!~~
-                                            Placeholders that are found from the files located in the configured resource
-                                            directories are replaced with the property values found from the profile
-                                            specific configuration file.
-                                        ~~>
-                                        <resource>
-                                            <filtering>true</filtering>
-                                            <directory>src/integration-test/resources</directory>
-                                        </resource>
-                                    </resources>
-                                </configuration>
-                            </execution>
-                            -->
-
                         </executions>
                     </plugin>
                     <plugin>
